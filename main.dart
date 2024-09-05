@@ -24,7 +24,6 @@ void main() {
 
   // Eingabe des Verifizierungscodes
   stdout.write("Geben Sie bitte ihren Verifizierungscode ein: ");
-
   String? inputVerificationCode = stdin.readLineSync();
 
   if (mobileNumber != null &&
@@ -61,22 +60,27 @@ void main() {
 
         case "2":
           // Nachricht senden
-          stdout.write("Geben Sie bitte den Empfängernamen ein: ");
-          String? recipientUsername = stdin.readLineSync();
-          stdout.write("Geben Sie bitte die Nachricht ein: ");
-          String? message = stdin.readLineSync();
-
-          if (recipientUsername != null && message != null) {
-            if (contacts.containsKey(recipientUsername)) {
-              messages
-                  .add("Nachricht an $recipientUsername gesendet: $message");
-              print("Nachricht erfolgreich gesendet.");
-            } else {
-              print("Empfänger nicht gefunden. Bitte versuchen Sie es erneut.");
-            }
+          if (contacts.isEmpty) {
+            print("Bitte legen Sie zuerst einen Kontakt an.");
           } else {
-            print(
-                "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut.");
+            stdout.write("Geben Sie bitte den Empfängernamen ein: ");
+            String? recipientUsername = stdin.readLineSync();
+            stdout.write("Geben Sie bitte die Nachricht ein: ");
+            String? message = stdin.readLineSync();
+
+            if (recipientUsername != null && message != null) {
+              if (contacts.containsKey(recipientUsername)) {
+                messages
+                    .add("Nachricht an $recipientUsername gesendet: $message");
+                print("Nachricht erfolgreich gesendet.");
+              } else {
+                print(
+                    "Empfänger nicht gefunden. Bitte versuchen Sie es erneut.");
+              }
+            } else {
+              print(
+                  "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut.");
+            }
           }
           break;
 
