@@ -24,6 +24,7 @@ void main() {
 
   // Eingabe des Verifizierungscodes
   stdout.write("Geben Sie bitte ihren Verifizierungscode ein: ");
+
   String? inputVerificationCode = stdin.readLineSync();
 
   if (mobileNumber != null &&
@@ -33,7 +34,7 @@ void main() {
       inputVerificationCode == verificationCode) {
     print("Registrierung und Verification erfolgreich!");
     print("");
-    print("Willkommen, $userName.");
+    print("Willkommen bei GlobeTransMessage, $userName.");
 
     // Direkt zum Menü weiterleiten
     while (true) {
